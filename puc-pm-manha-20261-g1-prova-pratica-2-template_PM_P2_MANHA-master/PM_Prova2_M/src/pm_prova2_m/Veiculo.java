@@ -1,0 +1,114 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package pm_prova2_m;
+
+import java.util.ArrayList;
+
+/**
+ *
+ * @author glbra
+ */
+public abstract class Veiculo {
+    
+    private String placa;
+    private String modelo;
+    private int anoFabricacao;
+    private double valorDiaria;
+    private double quilometragem;
+    private StatusVeiculo status;
+
+    
+    ArrayList<Veiculo> veiculos = new ArrayList<>();
+    ArrayList<Veiculo> veiculosDisponivel = new ArrayList<>();
+    ArrayList<Veiculo> veiculosManutencao = new ArrayList<>();
+    public Veiculo(String placa, String modelo, int anoFabricacao, double valorDiaria,double quilometragem, StatusVeiculo status) {
+         
+        this.placa = placa;
+        this.modelo = modelo;
+        this.anoFabricacao = anoFabricacao;
+        this.valorDiaria = valorDiaria;
+        this.quilometragem = quilometragem;
+        this.status = status;
+    }
+    
+    public void exibeVeiculos(){
+        for(Veiculo v : veiculos){
+            System.out.println(v);
+    }
+    }
+
+    
+    public void removerVeiculosManutencao(Veiculo veiculo){
+        if(veiculo.status == StatusVeiculo.MANUTENCAO){
+            veiculosDisponivel.remove(veiculo);
+            veiculosManutencao.add(veiculo);
+        }else{
+            System.out.println("Veiculo removido");
+        }
+    }
+    
+    
+    public void veiculosDisponivel(Veiculo veiculo){
+        if(veiculo.status == StatusVeiculo.DISPONIVEL){
+            veiculosDisponivel.add(veiculo);
+        }else{
+            System.out.println("Veiculo nao está disponivel");
+        }
+    }
+    
+    public String getPlaca() {
+        return placa;
+    }
+
+    public void setPlaca(String placa) {
+        this.placa = placa;
+    }
+
+    public String getModelo() {
+        return modelo;
+    }
+
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
+    }
+
+    public int getAnoFabricacao() {
+        return anoFabricacao;
+    }
+
+    public void setAnoFabricacao(int anoFabricacao) {
+        this.anoFabricacao = anoFabricacao;
+    }
+
+    public double getValorDiaria() {
+        return valorDiaria;
+    }
+
+    public void setValorDiaria(double valorDiaria) {
+        this.valorDiaria = valorDiaria;
+    }
+
+    public double getQuilometragem() {
+        return quilometragem;
+    }
+
+    public void setQuilometragem(double quilometragem) {
+        this.quilometragem = quilometragem;
+    }
+
+    public StatusVeiculo getStatus() {
+        return status;
+    }
+
+    public void setStatus(StatusVeiculo status) {
+        this.status = status;
+    }
+
+    public abstract void exibirDetalhes();
+
+    public abstract boolean possuiSeguroEspecial();
+    
+}
+
